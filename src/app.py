@@ -37,7 +37,7 @@ fig_ko = px.bar(
     opacity=0.7
 )
 from PIL import Image
-pil_image = Image.open(r"src\assets\Cassius.png")
+#pil_image = Image.open(r"src\assets\Cassius.png")
 # Custom styles
 colors = {
     'background': '#f0f0f0',  # Light gray background
@@ -180,7 +180,7 @@ app.layout = html.Div( children=[
       ]),
 
       dbc.Col(className="col-lg-3", children=[
-        html.Img(src=pil_image, className="img-fluid")  
+        #html.Img(src=pil_image, className="img-fluid")  
       ], style={"align-self": "self-end"})
 
     ])
