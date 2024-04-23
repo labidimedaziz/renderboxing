@@ -37,7 +37,11 @@ fig_ko = px.bar(
     opacity=0.7
 )
 from PIL import Image
-#pil_image = Image.open(r"src\assets\Cassius.png")
+import requests
+image_url = "https://raw.githubusercontent.com/labidimedaziz/renderboxing/main/src/assets/Cassius.png"
+response = requests.get(image_url)
+#pil_image = Image.open(image)
+import base64
 # Custom styles
 colors = {
     'background': '#f0f0f0',  # Light gray background
@@ -172,7 +176,7 @@ app.layout = html.Div( children=[
 
         html.P(["Ever heard someone claim their horoscope sign makes them a natural-born fighter? Well, the famous trainer cus d'eamato said that. While intriguing, this sparked a different question:  Does data reveal any truth behind these claims?  We set out to explore the characteristics of champions,  using data analysis to see if there's a science behind boxing success – beyond the stars.  This dashboard is dedicated to analyzing the characteristics of boxing champions. We delve into the science of boxing success, going beyond the stars. Explore the data to uncover valuable insights into the physical attributes, backgrounds, and distinguishing features of boxing's elite. Check the discussion and results in",
           
-          html.A("Discussion.", href="/Results", style={"color": "#0084d6"}),
+          html.A("Discussion.", href="#section-2", style={"color": "#0084d6"}),
           
           html.P("*Note: dashboard only covers data up to the beginning of 2024.", className="mt-1")
         ], className="card-text")
@@ -180,7 +184,7 @@ app.layout = html.Div( children=[
       ]),
 
       dbc.Col(className="col-lg-3", children=[
-        #html.Img(src=pil_image, className="img-fluid")  
+        html.Img(src="data:image/jpeg;base64," + str(base64.b64encode(response.content), 'utf-8'), className="img-fluid")  
       ], style={"align-self": "self-end"})
 
     ])
@@ -234,7 +238,7 @@ dbc.Row([
         dcc.Graph(id='zodiac_freq', figure=fig_zodiac, className="card")),
     dbc.Col(
         dcc.Graph( figure=fig_ko, className="card"))]),
-        html.H3("II.     Discussion", style={'textAlign': 'left', 'padding-top': '20px'}),
+        html.H3("II.     Discussion",id='section-2', style={'textAlign': 'left', 'padding-top': '20px'}),
         dcc.Markdown("""
         ##### •Project Context:
         I have been a passionate follower of boxing for the past five or six years,
