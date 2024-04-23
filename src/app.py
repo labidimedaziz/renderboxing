@@ -8,7 +8,7 @@ import dash_bootstrap_components as dbc
 from dash_bootstrap_templates import load_figure_template
 
 # Load data
-df = pd.read_csv('working_data.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/labidimedaziz/renderboxing/main/working_data.csv')
 df["ko_percentage"] = df["Wins by KO"] / df["Wins"].where(df["Wins"] > 0, 0)
 
 # Combine sex and weight class into a single column for labeling
